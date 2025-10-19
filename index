@@ -11,7 +11,7 @@
     <h1>Welcome to Fed Box 🎶</h1>
     <p>Join our community and enjoy exclusive music and updates.</p>
 
-    <!-- Music Player -->
+    <-- Music Player -->
     <audio controls autoplay loop>
       <source src="music.mp3" type="audio/mpeg">
       Your browser does not support the audio element.
