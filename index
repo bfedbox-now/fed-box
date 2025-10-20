@@ -1,33 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Fed Box</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="container">
-    <h1>Welcome to Fed Box 🎶</h1>
-    <p>Join our community and enjoy exclusive music and updates.</p>
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Audio test</title>
+  </head>
+  <body>
+    <h1>Audio test</h1>
 
-    <!-- Music Player -->
+    <p>External known-good MP3 (should play):</p>
+    <audio controls preload="metadata">
+      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+    </audio>
 
-<audio controls preload="auto">
-  <source https://bfedbox-now.github.io/fed-box/music.m4a">
-</audio>
+    <p>Your local files (will try MP3 then M4A):</p>
+    <audio controls preload="metadata">
+      <source src="music.mp3">
+      <source src="music.m4a">
+    </audio>
 
-
-
-
-
-    <!-- Signup Form -->
-    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-      <input type="email" name="email" placeholder="Enter your email" required />
-      <button type="submit">Sign Up</button>
-    </form>
-  </div>
-
-  <script src="script.js"></script>
-</body>
+    <p>jsDelivr mirror of your repo (CDN fallback):</p>
+    <audio controls preload="metadata">
+      <source src="https://cdn.jsdelivr.net/gh/bfedbox-now/fed-box@main/music.mp3">
+      <source src="https://cdn.jsdelivr.net/gh/bfedbox-now/fed-box@main/music.m4a">
+    </audio>
+  </body>
 </html>
