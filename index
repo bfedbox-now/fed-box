@@ -13,7 +13,7 @@
 
     <!-- Music Player -->
 
-<audio controls preload="none">
+<audio controls preload="auto">
   <source src="music.mp3" type="audio/mpeg">
   <source src="music.m4a" type="audio/mp4">
   <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
