@@ -12,12 +12,12 @@
     <p>Join our community and enjoy exclusive music and updates.</p>
 
     <!-- Music Player -->
-<audio controls loop preload="metadata">
+
+<audio controls preload="metadata">
   <source src="music.mp3" type="audio/mpeg">
   <source src="music.m4a" type="audio/mp4">
-  Your browser does not support the audio element.
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
 </audio>
-
 
 
 
