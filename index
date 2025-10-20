@@ -12,13 +12,14 @@
     <p>Join our community and enjoy exclusive music and updates.</p>
 
     <!-- Music Player -->
-    <audio controls loop>
-      <source src="music.mp3" type="audio/mpeg">
-      <!-- If your file is .m4a instead, use this line and remove the mp3 line:
-      <source src="music.m4a" type="audio/mp4">
-      -->
-      Your browser does not support the audio element.
-    </audio>
+<audio controls loop preload="metadata">
+  <source src="music.mp3" type="audio/mpeg">
+  <source src="music.m4a" type="audio/mp4">
+  Your browser does not support the audio element.
+</audio>
+
+
+
 
     <!-- Signup Form -->
     <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
