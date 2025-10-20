@@ -13,11 +13,13 @@
       <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
     </audio>
 
-    <p>Your local files (will try MP3 then M4A):</p>
-    <audio controls preload="metadata">
-      <source src="music.mp3">
-      <source src="music.m4a">
-    </audio>
+
+
+<audio controls preload="metadata">
+  <source src="https://cdn.jsdelivr.net/gh/bfedbox-now/fed-box@main/music.mp3" type="audio/mpeg">
+  <source src="https://cdn.jsdelivr.net/gh/bfedbox-now/fed-box@main/music.m4a" type="audio/mp4">
+</audio>
+
 
     <p>jsDelivr mirror of your repo (CDN fallback):</p>
     <audio controls preload="metadata">
