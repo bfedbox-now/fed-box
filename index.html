@@ -1,67 +1,95 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Home</title>
     <style>
-      body {
+      html, body {
         margin: 0;
         padding: 0;
-        background-color: #000;
+        height: 100%;
+        background: #000;
         font-family: Arial, sans-serif;
+        overflow: hidden; /* no page scroll / gaps */
       }
 
-      /* --- Navigation bar --- */
+      /* NAVBAR (y1 is its bottom edge) */
       nav {
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.85);
+        top: 0; left: 0; right: 0;
+        background: rgba(0,0,0,.85);
         display: flex;
+        align-items: center;
         justify-content: center;
         gap: 40px;
-        padding: 15px 0;
+        padding: 15px 0;   /* controls nav height */
         z-index: 10;
       }
-
       nav a {
-        color: white;
-        text-decoration: none;
-        font-size: 1.1em;
-        font-weight: bold;
-        transition: color 0.3s;
+        color: #fff; text-decoration: none; font-weight: bold; font-size: 1.1em;
       }
+      nav a:hover { color: #ffcc00; }
 
-      nav a:hover {
-        color: #ffcc00;
-      }
-
-      /* --- Full image below navbar --- */
-      .photo-container {
+      /* STAGE (locked between y1 and y0) */
+      .stage {
+        position: fixed;
+        /* JS will set exact 'top' pixel value = nav bottom (y1) */
+        left: 0; right: 0; bottom: 0;      /* y0 at bottom of screen */
+        background: #000;
         display: flex;
-        justify-content: center;
         align-items: center;
-        height: calc(100vh - 60px); /* 100% of viewport height minus navbar */
-        margin-top: 60px; /* push image below nav */
+        justify-content: center;
+        overflow: hidden;                  /* no internal scrollbars */
+        will-change: top, height;
       }
 
-      img {
-       
-        height: 100%;
-        object-fit: cover;  /* fill the container while preserving aspect ratio */
+      /* IMAGE: show full photo, no cropping, no overflow */
+      .stage img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;               /* see entire image */
+        display: block;
       }
     </style>
   </head>
   <body>
-    <nav>
+    <nav id="nav">
       <a href="weare.html">We Are</a>
       <a href="constitution.html">Constitution</a>
+      <a href="founder.html">About Founder</a>
     </nav>
 
-    <div class="photo-container">
-      <img src="Website2.jpg" alt="Main photo">
+    <div class="stage" id="stage">
+      <img src="Website2.jpg" alt="Main photo" />
     </div>
+
+    <script>
+      // Lock the stage between y1 (nav bottom) and y0 (viewport bottom)
+      function placeStage() {
+        const nav = document.getElementById('nav');
+        const stage = document.getElementById('stage');
+        const y1 = Math.round(nav.getBoundingClientRect().bottom); // px
+        stage.style.top = y1 + 'px';
+        // Optional: ensure no fractional gaps on some zoom levels
+        // Force reflow sizing if needed:
+        // stage.getBoundingClientRect();
+      }
+
+      // Run on load, resize, zoom-ish changes, and font render completes
+      window.addEventListener('load', () => {
+        placeStage();
+        // A couple extra frames to catch late font/layout shifts
+        requestAnimationFrame(placeStage);
+        setTimeout(placeStage, 100);
+        setTimeout(placeStage, 300);
+      });
+      window.addEventListener('resize', placeStage);
+      window.addEventListener('orientationchange', placeStage);
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(placeStage).catch(() => {});
+      }
+    </script>
   </body>
 </html>
+
